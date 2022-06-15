@@ -9,6 +9,10 @@ use App\Models\User;
 
 class HomeController extends Controller
 {
+    public function home(){
+        return view('livewire.user-component');
+    }
+    
     public function index()
     {
         // to show the welcome page according to the role they are assigned with
@@ -31,13 +35,31 @@ class HomeController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = bcrypt($request->password);
-
-        // here 2 means giving role of moderator by admin
-        $data->role='2';
-
         $data->save();
         
-        return redirect()->back();
+        return redirect()->back()->with('message','Added new mod');
     }
 
+    public function showusers(){
+        $user= User::all();
+        return view('livewire.user-component',['users'=>$user]);
+    }
+    public function delete($id){
+        $data = User::find($id);
+        $data->delete();
+        return redirect('showusers')->with('message',"Successfully deleted");
+    }
+    public function edituser($id){
+        $data = User::find($id);
+        return view('edit',['data'=>$data]);
+    }
+    public function editbtn(Request $req){
+        $data = User::find($req->id);
+        $data->name=$req->name;
+        $data->email=$req->email;
+        $data->role=$req->role;
+        $data->save();
+        return redirect('showusers')->with('message','Successfully edited');
+
+    }
 }

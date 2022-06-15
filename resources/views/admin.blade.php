@@ -1,9 +1,35 @@
 <x-app-layout>
    <div class="header">
-    <h1>Admin Dashboard</h1>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Function of Admin
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="showusers">Show users</a></li>
+                 
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+   </div>
+   <div style="padding-top:30px">
+    @if (session()->has('message'))
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        {{session()->get('message')}}
+    </div>
+    @endif
    </div>
 <div class="add-mod">
-
     <form  action="{{url('/addmod')}}" method="POST" style="margin: 20px; margin-left:50px">
         @csrf
         <form>
@@ -30,9 +56,8 @@
                 </div>
               </div>
            
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" style="background-color: black; margin-top:20px;   margin-left:100px;">Submit</button>
           </form>
-
     </form>
 
 </div>
