@@ -1,4 +1,6 @@
-<x-app-layout>
+
+  @extends('layouts.base')
+@section('content')
    <div class="header">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -64,5 +66,6 @@
     </form>
 
 </div>
+@endsection
 
-</x-app-layout>
+

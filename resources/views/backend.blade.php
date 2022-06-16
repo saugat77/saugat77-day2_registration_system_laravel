@@ -111,20 +111,22 @@
           <li class="nav-item menu-items"  {{count($data->subCategories )> 0 ? 'menu-arrow':''}}>
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
-                <i class="mdi mdi-list"></i>
+                <i class="mdi mdi-view-list"></i>
               </span>
               <span class="menu-title">{{$data->name}}</span>
               @if (count($data->subCategories)> 0)
               <i class="menu-arrow"></i>
             </a>   
-              @foreach ($data->subcategories as $cat )
-           
+              @foreach ($data->subcategories as $cat)
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">{{$cat->name}}</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">{{$cat->name}}</a></li>
               </ul>
             </div>
             @endforeach
+            @else
+            </a>
+            
             @endif
           </li> 
           

@@ -30,6 +30,10 @@ Route::get('/backend',[HomeController::class,'backend']);
 // Route::get('/addmenu',[HomeController::class,'addmenu']);
 Route::get('addmenu',AddMenuComponent::class);
 
+Route::get('/logout', function(){
+    Auth::logout();
+    return Redirect::to('login');
+ });
 
 Route::post('/addmod',[HomeController::class,'addmod']);
 
@@ -38,6 +42,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->get('/dashboard',[HomeController::class,'index'])->name('dashboard');
+
+Route::get('/welcome',[HomeController::class,'welcome']);
 
 Route::get('showusers',[HomeController::class,'showusers']);
 Route::get('delete/{id}',[HomeController::class,'delete']);

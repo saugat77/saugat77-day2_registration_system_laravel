@@ -1,4 +1,5 @@
-<x-app-layout>
+@extends('layouts.base')
+@section('content')
     <div class="header">
     <h1 style="font-size: 30px"> <b>Edit users </b>  </h1>
     <div style="padding-top:10px">
@@ -46,5 +47,5 @@
  
  </div>
  
- </x-app-layout>
+@endsection
  

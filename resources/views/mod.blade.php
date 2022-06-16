@@ -1,5 +1,6 @@
-<x-app-layout>
+@extends('layouts.base')
+@section('content')
     <div class="header">
         <h1>Moderator Dashboard</h1>
        </div>
-</x-app-layout>
+@endsection

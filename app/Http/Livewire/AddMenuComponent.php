@@ -23,7 +23,7 @@ class AddMenuComponent extends Component
             $side->name = $this->name;
             $side->save();
          }
-        session()->flash('message','Category was added');
+         return redirect('addmenu')->with('message',"Successfully added");
         
       
     }

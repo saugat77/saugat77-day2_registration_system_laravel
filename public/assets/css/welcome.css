@@ -1,0 +1,90 @@
+.header{
+  background-color: white;
+}
+.logo{
+  position: fixed;
+  background-color: white;
+  opacity: 0.8;
+}
+.hero{
+ background-color:yellowgreen;
+ background-size: cover;
+ height: 550px;
+
+}
+.hero  p{
+  text-align: center;
+  font-weight: 400px;
+  color: white;
+}
+.hero button{
+  align-items: center;
+}
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .centered button{
+    margin-left: 60px;
+    margin-top: -40px;
+  }
+  .form{
+    background-color: orangered;
+    font-size: 25px;
+    text-align: center;
+    color:white;
+    font-weight: 30px;
+  
+  }
+  .form{
+    align-items: center;
+  }
+  .para {
+    padding:50px;
+    margin: 100px;
+    background-color: wheat;
+    height: 300px;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 40px;
+    
+  }
+  .nepal{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color:orangered ;
+  
+  }
+  .nepal .ourwork{
+    margin-bottom: 10px;
+  }
+  .row{
+    width: 100%;
+    padding-top: 20px;
+  }
+.logo:hover{
+  background-color: yellow;
+}
+.nav-bar-down ul li:hover{
+  color: red;
+}
+  
+
+@media screen and (max-width: 600px) {
+  .logo.responsive {position: relative;}
+  .logo.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .logo.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}

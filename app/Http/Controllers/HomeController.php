@@ -31,7 +31,7 @@ class HomeController extends Controller
             return view('mod');
         }
         else{
-            return view('dashboard');
+            return view('index');
         }
     }
     // for adding new moderator
@@ -110,5 +110,8 @@ class HomeController extends Controller
         $data = SideBar::all();
         $submenu = NewSubMenu::all();
         return view('backend',['data'=>$data,'submenu'=>$submenu]);
+    }
+    public function welcome(){
+        return view('welcome');
     }
 }
