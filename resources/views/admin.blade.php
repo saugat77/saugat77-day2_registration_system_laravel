@@ -13,7 +13,10 @@
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                   <li><a class="dropdown-item" href="showusers">Show users</a></li>
                  
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="{{url('menuitems')}}">Menu Items</a></li>
+                  
+                  <li><a class="dropdown-item" href="{{url('addmenu')}}">Add Menu Items</a></li>
+
                 </ul>
               </li>
             </ul>
