@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\Member;
 use App\Models\SideBar;
 use App\Models\SubMenu;
 use App\Models\NewSubMenu;
@@ -14,6 +15,8 @@ use App\Models\NewSubMenu;
 class HomeController extends Controller
 {
     public $side_bar_id;
+    
+    
 
     public function home(){
         return view('livewire.user-component');
@@ -73,36 +76,6 @@ class HomeController extends Controller
         return view('menuitems');
     }
 
-    // public function menubtn(Request $request){
-    //     // if($this->side_bar_id){
-    //     //     $category = new NewSubMenu();
-    //     //     $category->name = $request->name;
-    //     //     $category->side_bar_id = $request->side_bar_id;
-    //     //     $category->save();
-
-    //     // }
-    //     // // else{
-    //         $side = new SideBar();
-    //         $side->name = $this->name;
-    //         $side->save();
-    //     // }
-    //     session()->flash('message','Category was added');
-    //     return redirect()->back()->with('message','Added new menu');
-      
-    // }
-    // public function addmenu(Request $request){
-    //     $data = new SideBar;
-    //     $data->name = $request->name;
-      
-    //     $data->save();
-        
-    //     return redirect()->back()->with('message','Added new mod');
-    // }
-
-    // public function addmenu(){
-    //     $menu = SideBar::all();
-    //     return view('livewire.add-menu-component',['menu'=>$menu]);
-    // }
 
     public function backend(){
     
@@ -113,5 +86,46 @@ class HomeController extends Controller
     }
     public function welcome(){
         return view('welcome');
+    }
+
+    public function register(){
+        
+        return view ('auth.register');
+    }
+    public function addmember(Request $request){
+        $data = new Member;
+        $data->userid = $request->userid;
+        $data->password = bcrypt($request->password);
+        $data->fname = $request->fname;
+        $data->lname = $request->lname;
+        $data->dob = $request->dob;
+        $data->address = $request->faddress;
+        $data->apt = $request->fapt;
+        $data->city = $request->fcity;
+        $data->state = $request->fstate;
+        $data->country = $request->fcountry;
+        $data->zip = $request->fzip;
+        $data->phone = $request->phone;
+        $data->email = $request->email;
+        $data->sfn = $request->sfname;
+        $data->sln = $request->slname;
+        $data->cfn = $request->cfname;
+        $data->cln = $request->clname;
+        $data->cage = $request->cage;
+        $data->caddress = $request->caddress;
+        $data->ccity = $request->ccity;
+        $data->cstate = $request->cstate;
+        $data->ccountry = $request->ccountry;
+        $data->czip = $request->czip;
+
+        $data->save();
+    
+        
+        return redirect()->back()->with('message','Added new member');
+        
+    }
+
+    public function login(){
+        return view('auth.login');
     }
 }

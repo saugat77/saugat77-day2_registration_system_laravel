@@ -21,7 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/register',[HomeController::class,'register']);
+Route::post('/addmember',[HomeController::class,'addmember']);
 
+Route::get('/login',[HomeController::class,'login']);
 
 Route::get('/redirects',[HomeController::class,'index']);
 

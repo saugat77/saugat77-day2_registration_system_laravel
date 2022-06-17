@@ -57,10 +57,10 @@
     @else
         {{-- <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a> --}}
         <button class="btn btn-secondary" type="button"  style="float: right; background-color:white; color:black" >
-            <b>  <a href="{{ route('login') }}" >Login</a></b>
+            <b>  <a href="{{ route('auth.login') }}" >Login</a></b>
         @if (Route::has('register'))
         <button class="btn btn-secondary" type="button"  style="float:right; background-color:white; color:black" >
-            <b>  <a href="{{ route('register') }}" >Register</a></b>
+            <b>  <a href="{{ route('auth.register') }}" >Register</a></b>
         @endif
     @endauth
 </div>
