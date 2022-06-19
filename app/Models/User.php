@@ -10,6 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\PaymentStatus;
+
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -59,4 +62,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
     public $timestamps =false;
+    public function subCategories(){
+        return $this->hasMany(PaymentStatus::class,'status'); 
+    }
 }

@@ -1,6 +1,8 @@
 @extends('layouts.base')
 @section('content')
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://releases.jquery.com/git/ui/jquery-ui-git.css">
 <script type="text/javascript">
  $(function(){
   $('#married').click(function(){
@@ -44,12 +46,9 @@
 </nav>
     <div class="register">
         <h1>Register</h1>
-        @if (session()->has('message'))
-    <div class="alert alert-success">
-        <button type="button" class="btn btn-close">x</button>
-        {{session()->get('message')}}
-    </div>
-    @endif
+        @if(Session::has('message'))
+        <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+        @endif
       
 <form action="{{url('addmember')}}" method="POST" class="row g-3"style="width: 50%; margin-left:150px" >
   @csrf
@@ -71,22 +70,27 @@
   </div>
   <div class="col-md-6">
     <label for="date-picker-example">Date Of Birth</label>
-    <input placeholder="Selected date" type="date" name="dob" id="date-picker" class="form-control datepicker" >
+    <input type="text" class="form-control" id = "dob" />
  
-    <?php   function getAge($dob){
-      $bday = new DateTime($dob);
-      $today = new DateTime(date('m.d.y')) ;
-      if($bday>$today){
-        return "wrong validation";
-      }
-      $diff = $today->diff($bday);
-      return $diff->y ." years";
-    }?>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          var age = "";
+          $('#dob').datepicker({
+              onSelect: function(value, ui) {
+                  var today = new Date();
+                  age = today.getFullYear() - ui.selectedYear;
+                  $('#age').val(age);
+              },
+              changeMonth: true,
+              changeYear: true
+          })
+      })
+  </script>
   </div>
   
   <div class="col-md-3">
-    <label for="age" class="form-label"><?php if(isset($_GET['dob']) && $_GET['dob']!='') echo getAge($_GET['dob']); ?></label>
-    <input type="submit" value="Automatic age calculator">
+    <label for="age" class="form-control-label">Age</label>
+    <input type="text" class="form-control" id = "age" readonly/>
   </div>
  
   <div class="col-12">
@@ -391,11 +395,11 @@
   <div id="hidemarriedinfo" style="display:none">
   <div class="col-md-6" >
     <label for="sfname" class="form-label">Spouse First name</label>
-    <input type="text"  class="form-control" id="sfname">
+    <input type="text"  class="form-control" id="sfname" name="spouse_first_name">
   </div>
   <div class="col-md-6">
     <label for="slname" class="form-label">Spouse Last Name</label>
-    <input type="text" class="form-control" id="slname">
+    <input type="text" class="form-control" id="slname" name="spouse_last_name">
   </div>
 
   <div class="col-12">
@@ -409,45 +413,41 @@
   <div id="hidechildinfo" style="display:none">
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Child First name</label>
-    <input type="text" class="form-control" id="fname"  name="cfn">
+    <input type="text" class="form-control" id="fname"  name="child_first_name">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Child Last Name</label>
-    <input type="text" class="form-control" id="lname" name="cln" >
+    <input type="text" class="form-control" id="lname" name="child_last_name" >
   </div>
   <div class="col-md-2">
     <label for="age" class="form-label">Age</label>
-    <input type="text" class="form-control" id="age" name="cage">
+    <input type="text" class="form-control" id="age" name="child_age">
   </div>
   <div class="col-12">
     <label class="form-check-label" for="gridCheck">
       Do u live in same address if no press here?
-    
-    <div class="form-check">
-      
       <input class="form-check-input"  type="checkbox" id ="no" >
     </label>
-    </div>
   </div>
 <div id="diffadress" style="display:none">
 <div class="col-12">
   <label for="inputAddress" class="form-label">Address</label>
-  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="caddress">
+  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="child_address">
 </div>
 <div class="col-6">
   <label for="inputCity" class="form-label">City</label>
-  <input type="text" class="form-control" id="inputCity" name="ccity">
+  <input type="text" class="form-control" id="inputCity" name="child_city">
 </div>
 <div class="col-4">
   <label for="inputState" class="form-label">State</label>
-  <select id="inputState" class="form-select" name="cstate">
+  <select id="inputState" class="form-select" name="child_state">
     <option selected>Choose...</option>
     <option>...</option>
   </select>
 </div>
 <div class="col-md-4">
   <label for="inputState" class="form-label">Country</label>
-  <select id="inputState" class="form-select" name="ccountry">
+  <select id="inputState" class="form-select" name="child_country">
     <option>USA</option>
     <option value="AF">Afghanistan</option>
     <option value="AX">Aland Islands</option>
@@ -705,14 +705,50 @@
 </div>
 <div class="col-md-2">
   <label for="inputZip" class="form-label">Zip</label>
-  <input type="text" class="form-control" id="inputZip" name="czip">
+  <input type="text" class="form-control" id="inputZip" name="child_zip">
 </div>
 </div>
 </div>
 </div>
+<script src="https://www.paypal.com/sdk/js?client-id=AVxV7MWHAF6u9_ofCHrGZQwLZxiAa4wu3u9l06ePlpNwh65JC7lhDmE4_MpqAxwpRFQNRmv1SP4nARjO&vault=true">
+</script> 
 
-  <div class="col-12 float-md-right">
-    <button type="submit" class="btn btn-primary">Register</button>
+<div id="paypal-button-container" ></div>
+<script>
+ paypal.Buttons({
+  createOrder: function(data, actions) {
+    // This function sets up the details of the transaction, including the amount and line item details.
+    return actions.order.create({
+      purchase_units: [{
+        amount: {
+          value: '0.01'
+        }
+      }]
+    });
+  },
+  onApprove: function(data, actions) {
+    // This function captures the funds from the transaction.
+    return actions.order.capture().then(function(details) {
+      // This function shows a transaction success message to your buyer.
+      if(details){
+
+      alert('Transaction completed by ' + details.payer.name.given_name +  "\n Thank You for buying memebership"+ "\n Now click on Register button to register for membership" );
+     
+      $('#register_btn').show();
+    
+      }else{
+        $('#register_btn').hide();
+      }
+    });
+    
+  }
+}).render('#paypal-button-container');
+//This function displays payment buttons on your web page.
+</script>
+  <div class="col-12 float-md-right" style="display: none" id="register_btn">
+    <label class="alert-success" style="font-size: 15px">**To register for the membership you need to click on the Register button</label><br>
+    <button type="submit" class="btn btn-primary" name="payment" style="width: 100%; border-radius:5%; font-size:30px; text-align:center;" wire:model="payment">Register</button>
+   
   
 </div>
 </form>

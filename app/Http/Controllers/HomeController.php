@@ -11,7 +11,7 @@ use App\Models\Member;
 use App\Models\SideBar;
 use App\Models\SubMenu;
 use App\Models\NewSubMenu;
-
+use App\Models\PaymentStatus;
 class HomeController extends Controller
 {
     public $side_bar_id;
@@ -92,8 +92,9 @@ class HomeController extends Controller
         
         return view ('auth.register');
     }
+   
     public function addmember(Request $request){
-        $data = new Member;
+        $data = new User;
         $data->userid = $request->userid;
         $data->password = bcrypt($request->password);
         $data->fname = $request->fname;
@@ -107,17 +108,21 @@ class HomeController extends Controller
         $data->zip = $request->fzip;
         $data->phone = $request->phone;
         $data->email = $request->email;
-        $data->sfn = $request->sfname;
-        $data->sln = $request->slname;
-        $data->cfn = $request->cfname;
-        $data->cln = $request->clname;
-        $data->cage = $request->cage;
-        $data->caddress = $request->caddress;
-        $data->ccity = $request->ccity;
-        $data->cstate = $request->cstate;
-        $data->ccountry = $request->ccountry;
-        $data->czip = $request->czip;
-
+        $data->spouse_first_name = $request->spouse_first_name;
+        $data->spouse_last_name = $request->spouse_last_name;
+        $data->child_first_name = $request->child_first_name;
+        $data->child_last_name = $request->child_last_name;
+        $data->child_age = $request->child_age;
+        $data->child_address = $request->child_address;
+        $data->child_city = $request->child_city;
+        $data->child_state = $request->child_state;
+        $data->child_country = $request->child_country;
+        $data->child_zip = $request->child_zip;
+        $payment = $data->payment;
+        if($payment == NewSubMenu::find($request->name=="payment_success")){
+            $category = NewSubMenu::find($request->id);
+           $payment = $request->status;
+        }
         $data->save();
     
         
