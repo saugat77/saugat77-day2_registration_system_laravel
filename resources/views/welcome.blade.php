@@ -37,7 +37,7 @@
         <p style="font-size:20px; float:left;padding-top:40px;line-spacing:1.5px; padding-left: 50px;">Our U.S. Service Learning Program gives students in underperforming urban <br> high schools the opportunity to impact their 
         local communities in powerful ways. And through our Global <br> School Construction Program, our students prove  that service
         and education can build a stronger <br> community and a better future. </p>
-        <img src="{{url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')}}" alt="child" style="height:300px; width:500px; float:right; padding-right:10px">
+        <img src="{{url('assets\images\new.jpg')}}" alt="child" style="height:300px; width:500px; float:right; padding-right:10px">
     
     <div style="padding-left: 120px; font-size:30px; float:left;" >
         <button style=" background-color: orangered; margin-top:50px; color:white; position:absolute">Explore Our Work</button>
@@ -48,15 +48,15 @@
   <div class="row" >
   <h1 style="font-size:40px; margin-left: 30px; margin-buttom: 20px;">More About Us</h1>
     <div class="col align-self-start" >
-        <img src="{{url('public\assets\images\arko.jpg')}}" alt="arko" style="border-radius:50%; padding-left:10px; height:200px; align-items:center;">
+        <img src="{{url('assets\images\arko.jpg')}}" alt="arko" style="border-radius:50%; padding-left:10px; height:200px; align-items:center;">
      <p style="margin-top:10px" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, corporis maxime modi laudantium repudiandae cum consequatur beatae atque tempora veniam neque reprehenderit aspernatur quos totam vitae ullam nobis, voluptatem at adipisci numquam itaque, alias amet blanditiis recusandae? Quis ratione harum similique, et at eaque cum dicta dolorem nulla deserunt, veritatis eum? Mollitia recusandae impedit repudiandae iusto minus minima laboriosam fugiat neque ullam, distinctio nulla expedita? Eos quibusdam placeat quisquam asperiores?</p>
     </div>
     <div class="col align-self-center">
-    <img src="{{url('public\assets\images\arko1.jpg')}}" alt="arko" style="border-radius:50%; margin-left:20px ;height:200px">
+    <img src="{{url('assets\images\arko1.jpg')}}" alt="arko" style="border-radius:50%; margin-left:20px ;height:200px">
     <p style="margin-top:10px">  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate reprehenderit temporibus voluptatibus quaerat inventore? Facilis, aliquid! Totam eaque veniam similique fuga, id eveniet ex cumque, facilis eos quas alias nemo at, omnis velit fugiat quidem sunt ipsam unde voluptatem atque? Amet reprehenderit laudantium soluta enim doloribus. Id suscipit possimus, expedita molestiae ex est accusantium eaque accusamus molestias amet illo unde sit corporis ea inventore odio et quos dolorum cumque doloribus.</p>
     </div>
     <div class="col align-self-end">
-    <img src="{{url('public\assets\images\arko1.jpg')}}" alt="arko" style="border-radius:50%; margin-left:20px; height:200px">
+    <img src="{{url('assets\images\arko1.jpg')}}" alt="arko" style="border-radius:50%; margin-left:20px; height:200px">
  <p style="margin-top:10px">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Est nihil iure illum nesciunt suscipit, tenetur animi quis aperiam magnam quaerat saepe incidunt nisi, consectetur aliquid nemo porro quibusdam? Rerum, blanditiis? Repellat esse aspernatur eveniet odio, atque vitae harum dolores ipsa, qui necessitatibus vero quibusdam deserunt voluptatem reprehenderit fuga consequuntur nostrum! Vitae, quae animi nemo natus nihil eius dicta consectetur quas quos beatae harum incidunt iusto eum deserunt, adipisci, quo fuga?</p>
     </div>
   </div>

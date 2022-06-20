@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
+
 use App\Http\Livewire\UserComponent;
 use App\Http\Livewire\AddMenuComponent;
 
@@ -20,6 +22,10 @@ use App\Http\Livewire\AddMenuComponent;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('pay',[PaymentController::class,'pay'])->name('payment');
+Route::get('success',[PaymentController::class,'success']);
+Route::get('error',[PaymentController::class,'error']);
 
 Route::get('/register',[HomeController::class,'register']);
 Route::post('/addmember',[HomeController::class,'addmember']);

@@ -92,8 +92,9 @@ class HomeController extends Controller
         
         return view ('auth.register');
     }
-   
+    
     public function addmember(Request $request){
+    
         $data = new User;
         $data->userid = $request->userid;
         $data->password = bcrypt($request->password);
@@ -118,17 +119,14 @@ class HomeController extends Controller
         $data->child_state = $request->child_state;
         $data->child_country = $request->child_country;
         $data->child_zip = $request->child_zip;
-        $payment = $data->payment;
-        if($payment == NewSubMenu::find($request->name=="payment_success")){
-            $category = NewSubMenu::find($request->id);
-           $payment = $request->status;
-        }
-        $data->save();
     
-        
+      
+        $data->save();
         return redirect()->back()->with('message','Added new member');
-        
+       
     }
+
+    
 
     public function login(){
         return view('auth.login');

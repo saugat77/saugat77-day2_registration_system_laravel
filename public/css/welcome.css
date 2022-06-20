@@ -2,7 +2,7 @@
   background-color: white;
 }
 .logo{
-  position: relative;
+  position: fixed;
   background-color: white;
   opacity: 0.8;
 }

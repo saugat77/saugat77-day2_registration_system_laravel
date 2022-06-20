@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{{ asset('public/css/welcome.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/welcome.css') }}" type="text/css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +39,7 @@
             </li>
         </ul>
 </div>
-@if (Route::has('login'))
+{{-- @if (Route::has('login'))
 <div class="hidden top-0 right-0 px-6 py-4 sm:block">
     @auth
       
@@ -56,23 +56,31 @@
       </ul>
     @else
         {{-- <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a> --}}
-        <button class="btn btn-secondary" type="button"  style="float: right; background-color:white; color:black" >
+        {{-- <button class="btn btn-secondary" type="button"  style="float: right; background-color:white; color:black" >
             <b>  <a href="{{ route('auth.login') }}" >Login</a></b>
         @if (Route::has('register'))
         <button class="btn btn-secondary" type="button"  style="float:right; background-color:white; color:black" >
             <b>  <a href="{{ route('auth.register') }}" >Register</a></b>
         @endif
-    @endauth
+    @endauth --}}
 </div>
-@endif
+{{-- @endif --}}
 <div class="logo">  
     <ul class="nav nav-pills"  style = "margin-left:40px; margin-top:10px ">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#" style="background-color:transparent; color:black; font-size:40px;">BuildOn</a>
         </li>
     <ul>
+
+<div class="class">
+  <ul>
+    <a href="{{url('login')}}" class="btn btn-secondary "  style="float: right">Login</a>
+    <a href="{{url('register')}}" class="btn btn-secondary" style="float: right">Register</a>
+  </ul>
+
+</div>
 <div class="nav-bar-down" >
-        <ul class="nav justify-content-end " style = "margin-left:540px; margin-top:-60px">
+        <ul class="nav justify-content-end " style = "margin-left:540px;">
             <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:white; color:black" >
         <b> Our Work</b>

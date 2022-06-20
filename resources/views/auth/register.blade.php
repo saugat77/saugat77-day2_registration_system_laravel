@@ -50,27 +50,29 @@
         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
         @endif
       
-<form action="{{url('addmember')}}" method="POST" class="row g-3"style="width: 50%; margin-left:150px" >
-  @csrf
+
+  <form action="{{route('payment')}}" method="POST" class="row g-3"style="width: 50%; margin-left:150px">
+    @csrf
+  
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">User Id</label>
-    <input type="email" class="form-control" id="inputEmail4" name="userid">
+    <input type="email" class="form-control" id="inputEmail4" name="userid" wire:model="userid" required>
   </div>
   <div class="col-md-6">
     <label for="inputpassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" name="password">
+    <input type="password" class="form-control" id="password" name="password" required >
   </div>
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">First name</label>
-    <input type="text" class="form-control" id="fname" name="fname" >
+    <input type="text" class="form-control" id="fname" name="fname" required>
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Last Name</label>
-    <input type="text" class="form-control" id="lname" name="lname">
+    <input type="text" class="form-control" id="lname" name="lname" required>
   </div>
   <div class="col-md-6">
     <label for="date-picker-example">Date Of Birth</label>
-    <input type="text" class="form-control" id = "dob" />
+    <input type="text" class="form-control" id = "dob" name="dob" required/>
  
     <script type="text/javascript">
       $(document).ready(function() {
@@ -84,7 +86,7 @@
               changeMonth: true,
               changeYear: true
           })
-      })
+        })
   </script>
   </div>
   
@@ -95,26 +97,26 @@
  
   <div class="col-12">
     <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="faddress">
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="faddress" required >
   </div>
   <div class="col-12">
     <label for="inputAddress2" class="form-label">Apartment name</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="fapt" >
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="fapt" required>
   </div>
   <div class="col-6">
     <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity" name="fcity">
+    <input type="text" class="form-control" id="inputCity" name="fcity" required>
   </div>
   <div class="col-4">
     <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select" name="fstate">
+    <select id="inputState" class="form-select" name="fstate" required>
       <option selected>Choose...</option>
       <option>...</option>
     </select>
   </div>
   <div class="col-md-4">
     <label for="inputState" class="form-label">Country</label>
-    <select id="inputState" class="form-select" name="fcountry">
+    <select id="inputState" class="form-select" name="fcountry" required>
       <option>USA</option>
       <option value="AF">Afghanistan</option>
       <option value="AX">Aland Islands</option>
@@ -372,15 +374,15 @@
   </div>
   <div class="col-md-2">
     <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip" name="fzip">
+    <input type="text" class="form-control" id="inputZip" name="fzip" required>
   </div>
   <div class="col-6">
     <label for="phone" class="form-label">Phone</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="+977-" name="phone">
+    <input type="text" class="form-control" id="inputAddress" placeholder="+977-" name="phone" required>
   </div>
   <div class="col-6">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputCity" name="email">
+    <input type="email" class="form-control" id="inputCity" name="email" required>
   </div>
   
   <div class="col-12">
@@ -425,7 +427,7 @@
   </div>
   <div class="col-12">
     <label class="form-check-label" for="gridCheck">
-      Do u live in same address if no press here?
+      Do u live in same address if no press here? 
       <input class="form-check-input"  type="checkbox" id ="no" >
     </label>
   </div>
@@ -710,7 +712,9 @@
 </div>
 </div>
 </div>
-<script src="https://www.paypal.com/sdk/js?client-id=AVxV7MWHAF6u9_ofCHrGZQwLZxiAa4wu3u9l06ePlpNwh65JC7lhDmE4_MpqAxwpRFQNRmv1SP4nARjO&vault=true">
+
+
+{{-- <script src="https://www.paypal.com/sdk/js?client-id=AVxV7MWHAF6u9_ofCHrGZQwLZxiAa4wu3u9l06ePlpNwh65JC7lhDmE4_MpqAxwpRFQNRmv1SP4nARjO&vault=true">
 </script> 
 
 <div id="paypal-button-container" ></div>
@@ -721,7 +725,7 @@
     return actions.order.create({
       purchase_units: [{
         amount: {
-          value: '0.01'
+          value: '50000'
         }
       }]
     });
@@ -744,13 +748,17 @@
   }
 }).render('#paypal-button-container');
 //This function displays payment buttons on your web page.
-</script>
-  <div class="col-12 float-md-right" style="display: none" id="register_btn">
-    <label class="alert-success" style="font-size: 15px">**To register for the membership you need to click on the Register button</label><br>
-    <button type="submit" class="btn btn-primary" name="payment" style="width: 100%; border-radius:5%; font-size:30px; text-align:center;" wire:model="payment">Register</button>
-   
+</script> --}}
+
+
+    <input type="hidden" name="amount" value="100">
   
-</div>
+    <button type="submit" class="btn btn-primary" style="background-color:black;width: 100%; font-size:30px; text-align:center;">Register With Paypal</button>
+   
+
+
+
 </form>
+</div>
 
 @endsection

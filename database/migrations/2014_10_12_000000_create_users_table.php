@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('fname');
             $table->string('lname');
-            $table->date('dob');
+            $table->string('dob');
             $table->string('address');
             $table->string('apt');
             $table->string('city');
@@ -38,9 +38,10 @@ return new class extends Migration
             $table->string('child_state')->nullable();
             $table->string('child_country')->nullable();
             $table->string('child_zip')->nullable();
-            $table->bigInteger('status')->unsigned()->nullable();
+            $table->enum('payment_status',['Payment_Pending','Payment_Done','Payment_Canceled'])->default('Payment_Pending');
             $table->timestamps();
-            $table->foreign('status')->references('id')->on('payment_statuses')->onDelete('cascade');
+          // $table->foreign('payment_status')->references('id')->on('payment_statuses')->onDelete('cascade');
+         
 
         });
     }
